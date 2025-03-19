@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Recipe {
+struct Recipe: Identifiable {
     var mainInformation: MainInformation
     var ingredients: [Ingredient]
     var directions: [Direction]
@@ -23,6 +23,8 @@ struct Recipe {
                  ingredients: [],
                  directions: [])
      }
+    
+    var id = UUID()
 }
 struct MainInformation {
     var name: String
