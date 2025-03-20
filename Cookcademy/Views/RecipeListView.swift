@@ -9,6 +9,10 @@ import SwiftUI
 
 struct RecipeListView: View {
     
+    private let listBackgroundColor = AppColor.background
+    private let listTextColor = AppColor.foreground
+    
+    
     @StateObject var recipeData = RecipeData()
     
     var body: some View {
@@ -16,9 +20,11 @@ struct RecipeListView: View {
         List {
             ForEach(recipes) { recipe in
                 NavigationLink(recipe.mainInformation.name, destination: RecipeDetailView(recipe: recipe))
-            }
+            }.listRowBackground(listBackgroundColor)
+            .foregroundColor(listTextColor)
         }
         .navigationTitle(navigationTitle)
+        
     }
     
 }

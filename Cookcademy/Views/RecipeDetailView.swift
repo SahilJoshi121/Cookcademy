@@ -13,6 +13,9 @@ struct RecipeDetailView: View {
     
     @StateObject var recipeData = RecipeData()
     
+    private let listBackgroundColor = AppColor.background
+    private let listTextColor = AppColor.foreground
+    
     var body: some View {
         VStack {
             HStack {
@@ -35,6 +38,7 @@ struct RecipeDetailView: View {
                     let ingredient = recipe.ingredients[index]
                     Text(ingredient.description)
                   }
+                  .listRowBackground(listBackgroundColor)
                 }
                 Section(header: Text("Instructions")) {
                     ForEach(recipe.directions.indices, id: \.self) { index in
@@ -48,11 +52,12 @@ struct RecipeDetailView: View {
                             }
                         }
                     }
+                    .listRowBackground(listBackgroundColor)
                 }
             }
         }
+        .foregroundColor(listTextColor)
         .navigationTitle(recipe.mainInformation.name)
-        
     }
 }
 
